@@ -19,7 +19,8 @@ export default function Phonebook() {
       id: nanoid(), name, number,
     };
     
-      if (contacts.find((item) => (item.name.toLowerCase()) === (contact.name.toLowerCase()))) {
+    if (contacts.find((item) =>
+      (item.name.toLowerCase()) === (contact.name.toLowerCase()))) {
       return alert(`Contact ${name} already exists`);
     }
 
