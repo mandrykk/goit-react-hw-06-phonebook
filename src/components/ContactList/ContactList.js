@@ -1,25 +1,20 @@
 import styles from './ContactList.module.css';
+import ContactItem from '../ContactItem/ContactItem';
 
-import { useSelector, useDispatch} from 'react-redux';
+import { useSelector } from 'react-redux';
 import { getAllContacts } from '../../app/selectors';
-import { deleteContact } from '../../app/actions';
 
 export default function Contacts() {
   const contacts = useSelector(getAllContacts);
-  const dispatch = useDispatch();
 
   return (
     <ul className={styles.list}>
       {contacts.map((contact) => (
-        <li className={styles.item} key={contact.id}>
-          <span className={styles.span}>
-            {contact.name}:{contact.number}
-          </span>
-          <button type="button"
-            className={styles.button}
-            onClick={() => dispatch(deleteContact(contact.id))}>
-            Delete ❌
-          </button>
+        <li key={contact.id} className={styles.item}>
+          <ContactItem
+            name={contact.name}
+            number={contact.number}
+            id={contact.id} />
         </li>
       ))}
     </ul>
